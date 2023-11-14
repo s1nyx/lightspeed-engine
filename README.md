@@ -36,10 +36,6 @@ Les contributions au **LightSpeed Engine** sont les bienvenues. Si vous avez des
 
 Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
-## Auteurs ✨
-
-- Vous (votre nom) - _Initial Work_
-
 ---
 
 Construit avec 💖 et 🤖 par [Sinyx](https://github.com/votreusername)
