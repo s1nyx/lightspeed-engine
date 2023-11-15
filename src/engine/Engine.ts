@@ -5,25 +5,38 @@ import InputManager from "../input/InputManager";
 import AudioManager from "../audio/AudioManager";
 
 class Engine {
-    private readonly sceneManager: SceneManager;
-    private readonly renderer: Renderer;
+    private readonly _sceneManager: SceneManager;
+    private readonly _renderer: Renderer;
     private readonly physicsEngine: PhysicsEngine;
     private readonly audioManager: AudioManager;
+    private readonly _inputManager: InputManager;
 
     private isRunning: boolean;
     private lastUpdateTime: number;
 
+    private updateCallback: (deltaTime: number) => void;
+
     constructor() {
-        this.sceneManager = new SceneManager();
-        this.renderer = new Renderer();
+        this._sceneManager = new SceneManager();
+        this._renderer = new Renderer();
         this.physicsEngine = new PhysicsEngine();
         this.audioManager = new AudioManager();
+        this._inputManager = new InputManager();
 
         this.isRunning = false;
+        this.updateCallback = () => {};
     }
 
-    // Initialisation du moteur
-    public initialize(): void {
+    get sceneManager(): SceneManager {
+        return this._sceneManager;
+    }
+
+    get inputManager(): InputManager {
+        return this._inputManager;
+    }
+
+    get renderer(): Renderer {
+        return this._renderer;
     }
 
     // Lancer la boucle de jeu
@@ -32,6 +45,11 @@ class Engine {
 
         this.gameLoop();
     }
+
+    public onUpdate(callback: (deltaTime: number) => void): void {
+        this.updateCallback = callback;
+    }
+
 
     // Boucle de jeu principale
     private gameLoop(): void {
@@ -43,10 +61,10 @@ class Engine {
         const deltaTime = (currentTime - this.lastUpdateTime) / 1000.0;
         this.lastUpdateTime = currentTime;
 
-        this.sceneManager.update(deltaTime);
+        this._sceneManager.update(deltaTime);
         this.physicsEngine.update(deltaTime);
 
-        this.renderer.render(this.sceneManager.getCurrentScene());
+        this.updateCallback(deltaTime);
 
         requestAnimationFrame(() => this.gameLoop());
     }

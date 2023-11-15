@@ -36,7 +36,7 @@ class Renderer {
         });
     }
 
-    private drawGameObject(gameObject: GameObject): void {
+    public drawGameObject(gameObject: GameObject): void {
         if (gameObject.sprite) {
             // Dessiner l'image si le GameObject a une sprite
             this.renderingContext.drawImage(gameObject.sprite, gameObject.x, gameObject.y, gameObject.width, gameObject.height);
@@ -45,6 +45,10 @@ class Renderer {
             this.renderingContext.fillStyle = 'red'; // Couleur par défaut, à personnaliser
             this.renderingContext.fillRect(gameObject.x, gameObject.y, gameObject.width, gameObject.height);
         }
+    }
+
+    public clear(): void {
+        this.renderingContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 }
 

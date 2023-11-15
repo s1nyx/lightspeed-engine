@@ -7,8 +7,10 @@ class Scene {
         this.gameObjects = [];
     }
 
-    public addGameObject(gameObject: GameObject): void {
+    public addGameObject(gameObject: GameObject): Scene {
         this.gameObjects.push(gameObject);
+
+        return this;
     }
 
     public update(delaTime: number): void {

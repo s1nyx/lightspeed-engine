@@ -1,20 +1,12 @@
 class InputManager {
-    private static instance: InputManager;
     private keyStates: Map<string, boolean>;
 
-    private constructor() {
+    constructor() {
         this.keyStates = new Map<string, boolean>();
 
         // Écouteurs d'événements pour les entrées clavier
         window.addEventListener('keydown', this.onKeyDown.bind(this));
         window.addEventListener('keyup', this.onKeyUp.bind(this));
-    }
-
-    public static getInstance(): InputManager {
-        if (!InputManager.instance) {
-            InputManager.instance = new InputManager();
-        }
-        return InputManager.instance;
     }
 
     /**
