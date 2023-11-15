@@ -4,8 +4,9 @@ class GameObject {
     public width: number;
     public height: number;
     public velocity: { x: number, y: number };
+    public sprite: HTMLImageElement | null;
 
-    constructor(x: number, y: number, width: number, height: number) {
+    constructor(x: number, y: number, width: number, height: number, sprite: HTMLImageElement | null = null) {
         this.x = x;
         this.y = y;
 
@@ -13,6 +14,8 @@ class GameObject {
         this.height = height;
 
         this.velocity = { x: 0, y: 0 };
+
+        this.sprite = sprite;
     }
 
     /**
