@@ -1,17 +1,17 @@
 class Logger {
-    public debug(message: string): void {
+    public static debug(message: string): void {
         console.debug(`[DEBUG] ${message}`);
     }
 
-    public info(message: string): void {
+    public static info(message: string): void {
         console.info(`[INFO] ${message}`);
     }
 
-    public warn(message: string): void {
+    public static warn(message: string): void {
         console.warn(`[WARN] ${message}`);
     }
 
-    public error(message: string): void {
+    public static error(message: string): void {
         console.error(`[ERROR] ${message}`);
     }
 }
