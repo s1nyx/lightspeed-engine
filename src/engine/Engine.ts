@@ -8,7 +8,6 @@ class Engine {
     private readonly sceneManager: SceneManager;
     private readonly renderer: Renderer;
     private readonly physicsEngine: PhysicsEngine;
-    private readonly inputManager: InputManager;
     private readonly audioManager: AudioManager;
 
     private isRunning: boolean;
@@ -18,7 +17,6 @@ class Engine {
         this.sceneManager = new SceneManager();
         this.renderer = new Renderer();
         this.physicsEngine = new PhysicsEngine();
-        this.inputManager = new InputManager();
         this.audioManager = new AudioManager();
 
         this.isRunning = false;
