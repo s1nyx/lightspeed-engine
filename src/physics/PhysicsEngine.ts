@@ -7,10 +7,18 @@ class PhysicsEngine {
         this.gameObjects = [];
     }
 
+    /**
+     * Ajouter un GameObject au moteur physique
+     * @param gameObject
+     */
     public addGameObject(gameObject: GameObject): void {
         this.gameObjects.push(gameObject);
     }
 
+    /**
+     * Mettre à jour les positions des GameObjects et gérer les collisions
+     * @param deltaTime
+     */
     public update(deltaTime: number): void {
         // Gestion des collisions
         for (let i = 0; i < this.gameObjects.length; i++) {
@@ -30,8 +38,27 @@ class PhysicsEngine {
         });
     }
 
+    /**
+     * Résoudre une collision entre deux GameObjects
+     * @param gameObject1
+     * @param gameObject2
+     * @private
+     */
     private resolveCollision(gameObject1: GameObject, gameObject2: GameObject): void {
+        // Calculer la différence de position pour déterminer le côté de la collision
+        const dx = (gameObject1.x + gameObject1.width / 2) - (gameObject2.x + gameObject2.width / 2);
+        const dy = (gameObject1.y + gameObject1.height / 2) - (gameObject2.y + gameObject2.height / 2);
 
+        // Collision horizontale
+        if (Math.abs(dx) > Math.abs(dy)) {
+            gameObject1.velocity.x *= -1;
+            gameObject2.velocity.x *= -1;
+
+        // Collision verticale
+        } else {
+            gameObject1.velocity.y *= -1;
+            gameObject2.velocity.y *= -1;
+        }
     }
 }
 
