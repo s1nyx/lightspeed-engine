@@ -47,8 +47,6 @@ class Engine {
 
         this.sceneManager.update(deltaTime);
         this.physicsEngine.update(deltaTime);
-        this.inputManager.update();
-        this.audioManager.update();
 
         this.renderer.render(this.sceneManager.getCurrentScene());
 
