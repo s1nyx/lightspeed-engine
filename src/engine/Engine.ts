@@ -3,6 +3,7 @@ import Renderer from "../rendering/Renderer";
 import PhysicsEngine from "../physics/PhysicsEngine";
 import InputManager from "../input/InputManager";
 import AudioManager from "../audio/AudioManager";
+import UIManager from "../ui/UIManager";
 
 class Engine {
     private readonly _sceneManager: SceneManager;
@@ -10,6 +11,7 @@ class Engine {
     private readonly physicsEngine: PhysicsEngine;
     private readonly audioManager: AudioManager;
     private readonly _inputManager: InputManager;
+    private readonly _uiManager: UIManager;
 
     private isRunning: boolean;
     private lastUpdateTime: number;
@@ -22,6 +24,7 @@ class Engine {
         this.physicsEngine = new PhysicsEngine();
         this.audioManager = new AudioManager();
         this._inputManager = new InputManager();
+        this._uiManager = new UIManager();
 
         this.isRunning = false;
         this.updateCallback = () => {};
@@ -65,6 +68,9 @@ class Engine {
         this.physicsEngine.update(deltaTime);
 
         this.updateCallback(deltaTime);
+
+        // Rendu des éléments d'interface utilisateur
+        this._uiManager.drawElements(this.renderer.renderingContext);
 
         requestAnimationFrame(() => this.gameLoop());
     }

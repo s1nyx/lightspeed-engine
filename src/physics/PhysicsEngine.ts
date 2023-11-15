@@ -1,18 +1,10 @@
 import GameObject from "../engine/GameObject";
 
 class PhysicsEngine {
-    private gameObjects: GameObject[];
+    private readonly gameObjects: GameObject[];
 
     constructor() {
         this.gameObjects = [];
-    }
-
-    /**
-     * Ajouter un GameObject au moteur physique
-     * @param gameObject
-     */
-    public addGameObject(gameObject: GameObject): void {
-        this.gameObjects.push(gameObject);
     }
 
     /**

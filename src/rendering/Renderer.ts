@@ -2,23 +2,28 @@ import Scene from "../engine/Scene";
 import GameObject from "../engine/GameObject";
 
 class Renderer {
-    private renderingContext: CanvasRenderingContext2D;
+    private _renderingContext: CanvasRenderingContext2D;
     private canvas: HTMLCanvasElement;
 
     constructor() {
+        // Récupérer le canvas et son contexte de rendu
         this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
 
         if (!this.canvas) {
             throw new Error("Canvas not found");
         }
 
-        this.renderingContext = this.canvas.getContext("2d");
+        this._renderingContext = this.canvas.getContext("2d");
 
-        if (!this.renderingContext) {
+        if (!this._renderingContext) {
             throw new Error("WebGL not supported");
         }
 
         //this.initializeWebGLSettings();
+    }
+
+    get renderingContext(): CanvasRenderingContext2D {
+        return this._renderingContext;
     }
 
     /*private initializeWebGLSettings(): void {
@@ -39,16 +44,16 @@ class Renderer {
     public drawGameObject(gameObject: GameObject): void {
         if (gameObject.sprite) {
             // Dessiner l'image si le GameObject a une sprite
-            this.renderingContext.drawImage(gameObject.sprite, gameObject.x, gameObject.y, gameObject.width, gameObject.height);
+            this._renderingContext.drawImage(gameObject.sprite, gameObject.x, gameObject.y, gameObject.width, gameObject.height);
         } else {
             // Dessin par défaut si aucune sprite n'est définie
-            this.renderingContext.fillStyle = 'red'; // Couleur par défaut, à personnaliser
-            this.renderingContext.fillRect(gameObject.x, gameObject.y, gameObject.width, gameObject.height);
+            this._renderingContext.fillStyle = 'red'; // Couleur par défaut, à personnaliser
+            this._renderingContext.fillRect(gameObject.x, gameObject.y, gameObject.width, gameObject.height);
         }
     }
 
     public clear(): void {
-        this.renderingContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this._renderingContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 }
 

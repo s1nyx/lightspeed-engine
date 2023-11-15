@@ -7,12 +7,20 @@ class Scene {
         this.gameObjects = [];
     }
 
+    /**
+     * Ajouter un GameObject à la scène
+     * @param gameObject
+     */
     public addGameObject(gameObject: GameObject): Scene {
         this.gameObjects.push(gameObject);
 
         return this;
     }
 
+    /**
+     * Mettre à jour les positions des GameObjects de la scène
+     * @param delaTime
+     */
     public update(delaTime: number): void {
         this.gameObjects.forEach((gameObject) => {
             gameObject.update(delaTime);
