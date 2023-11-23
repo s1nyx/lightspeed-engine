@@ -1,7 +1,7 @@
-import Engine from "../../../src/engine/Engine";
-import GameObject from "../../../src/engine/GameObject";
-import Scene from "../../../src/engine/Scene";
-import Logger from "../../../src/utils/Logger";
+import Engine from "../../../dist/engine/Engine";
+import GameObject from "../../../dist/engine/GameObject";
+import Scene from "../../../dist/engine/Scene";
+import Logger from "../../../dist/utils/Logger";
 
 // Initialiser le moteur et ses composants
 const engine = new Engine();
@@ -43,7 +43,7 @@ engine.onUpdate((deltaTime) => {
     ball.x += ball.velocity.x * deltaTime;
     ball.y += ball.velocity.y * deltaTime;
 
-    // Collision avec les bords haut et bas
+    // Collision avec les bords haut et bas5,262.93
     if (ball.y <= 0 || ball.y + ball.height >= 600) ball.velocity.y *= -1;
 
     renderer.clear();

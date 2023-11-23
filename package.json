@@ -1,0 +1,28 @@
+{
+  "name": "lightspeed-engine",
+  "version": "1.0.0",
+  "description": "Bienvenue sur le projet **LightSpeed Engine**! Ce moteur de jeu unique est conçu pour une expérience de développement rapide et efficace, en utilisant les capacités avancées de ChatGPT (GPT-4) de OpenAI.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples",
+    "test": "tests"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s1nyx/lightspeed-engine.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/s1nyx/lightspeed-engine/issues"
+  },
+  "homepage": "https://github.com/s1nyx/lightspeed-engine#readme",
+  "devDependencies": {
+    "typescript": "^5.3.2"
+  }
+}
