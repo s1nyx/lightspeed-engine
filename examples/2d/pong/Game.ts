@@ -1,7 +1,7 @@
-import Engine from "../../../dist/engine/Engine";
-import GameObject from "../../../dist/engine/GameObject";
-import Scene from "../../../dist/engine/Scene";
-import Logger from "../../../dist/utils/Logger";
+import Engine from "../../../src/engine/Engine";
+import GameObject from "../../../src/engine/GameObject";
+import Scene from "../../../src/engine/Scene";
+import Logger from "../../../src/utils/Logger";
 
 // Initialiser le moteur et ses composants
 const engine = new Engine();
@@ -38,6 +38,7 @@ engine.onUpdate((deltaTime) => {
     if (inputManager.isKeyPressed('s')) paddle1.y += 10;
     if (inputManager.isKeyPressed('ArrowUp')) paddle2.y -= 10;
     if (inputManager.isKeyPressed('ArrowDown')) paddle2.y += 10;
+
 
     // Mise à jour de la position de la balle
     ball.x += ball.velocity.x * deltaTime;
